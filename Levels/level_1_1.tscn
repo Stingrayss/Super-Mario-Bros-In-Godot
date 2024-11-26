@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=4 uid="uid://cc2xh6cdmo4t"]
+[gd_scene load_steps=4 format=4 uid="uid://cc2xh6cdmo4t"]
 
+[ext_resource type="PackedScene" uid="uid://edkj6nd5mxs0" path="res://Assets/Spritesheets/Mario/player.tscn" id="1_43ees"]
 [ext_resource type="TileSet" uid="uid://mthffehutx77" path="res://Levels/tileset.tres" id="1_wy15u"]
-[ext_resource type="Script" path="res://Levels/camera_2d.gd" id="2_yj8r3"]
+[ext_resource type="Script" path="res://Globals/camera_2d.gd" id="2_yj8r3"]
 
 [node name="Level1-1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_43ees")]
+z_index = 1
+position = Vector2(42, 1)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(172, -4)
+scale = Vector2(2, 2)
+offset = Vector2(0, -88)
+zoom = Vector2(3, 3)
+script = ExtResource("2_yj8r3")
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -48,9 +61,3 @@ tile_set = ExtResource("1_wy15u")
 [node name="Castle" type="TileMapLayer" parent="Tiles"]
 tile_map_data = PackedByteArray("AADKAP//AQAEAAEAAADLAP//AQAEAAEAAADNAP//AQAEAAEAAADOAP//AQAEAAEAAADOAP7/AQAEAAEAAADNAP7/AQAEAAEAAADLAP7/AQAEAAEAAADKAP7/AQAEAAEAAADMAP//AQAGAAEAAADMAP7/AQAGAAAAAADKAP3/AQAEAAAAAADLAP3/AQAFAAAAAADMAP3/AQAFAAAAAADNAP3/AQAFAAAAAADOAP3/AQAEAAAAAADLAPz/AQADAAEAAADNAPz/AQAFAAEAAADMAPz/AQAEAAEAAADLAPv/AQAEAAAAAADNAPv/AQAEAAAAAADMAPv/AQAEAAAAAAA=")
 tile_set = ExtResource("1_wy15u")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(128, -1)
-offset = Vector2(0, -88)
-zoom = Vector2(3, 3)
-script = ExtResource("2_yj8r3")
