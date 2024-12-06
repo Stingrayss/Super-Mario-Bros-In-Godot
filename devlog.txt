@@ -1,0 +1,29 @@
+-- bugs --
+- teleporting position camera border holding both directions
+
+-- easy to forget --
+- checkpoint in middle of state
+- dying with star doesn't do the death animation?
+- star interrupts the music
+- blocks need to be entities, not tiles (inheritance + collision hitboxes + scripts)
+
+-- optional features --
+- ai mario on main menu
+- 2 player game
+- options
+- extra content
+- level selecter
+
+-- things to do --
+- figure out layer masks for tiles (redo tiles basically)
+- watch tutorial
+
+-- big items --
+- mario movement (15% of remaining)
+- enemies (15%)
+- blocks (5%)
+- flagpole interaction + sequence (NEED TO BE SCENE) (5%)
+- game variable logic (5%)
+
+-- progress --
+- 55%/100%

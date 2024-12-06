@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwdpa1t6i4k10"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/transition.gd" id="1_7m1ef"]
+[ext_resource type="PackedScene" uid="uid://ms018t8pkpdj" path="res://Scenes/Levels/HUD.tscn" id="1_464b5"]
+[ext_resource type="Texture2D" uid="uid://dva1jlukfum5n" path="res://Assets/Spritesheets/HUD/amount_symbol.png" id="2_p6336"]
+
+[node name="Transition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_7m1ef")
+
+[node name="HUD" parent="." instance=ExtResource("1_464b5")]
+layout_mode = 1
+offset_top = 243.0
+offset_bottom = 243.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 243.0
+color = Color(0, 0, 0, 1)
+
+[node name="Load_Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="x" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_p6336")
+
+[node name="Mario" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stage" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 18.0
+
+[node name="Lives" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 18.0
+
+[connection signal="timeout" from="Load_Timer" to="." method="_on_load_timer_timeout"]

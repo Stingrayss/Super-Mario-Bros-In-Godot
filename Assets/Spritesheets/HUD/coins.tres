@@ -1,0 +1,20 @@
+[gd_resource type="AnimatedTexture" load_steps=4 format=3 uid="uid://bdjnwtmcb0bd6"]
+
+[ext_resource type="Texture2D" uid="uid://b0djjajq5pu86" path="res://Assets/Spritesheets/HUD/hud_coin_1.png" id="1_jhl0j"]
+[ext_resource type="Texture2D" uid="uid://c3pc1irovmr6x" path="res://Assets/Spritesheets/HUD/hud_coin_2.png" id="2_32lji"]
+[ext_resource type="Texture2D" uid="uid://pxxetoi2tqea" path="res://Assets/Spritesheets/HUD/hud_coin_3.png" id="3_us44l"]
+
+[resource]
+frames = 6
+speed_scale = 7.5
+frame_0/texture = ExtResource("1_jhl0j")
+frame_1/texture = ExtResource("2_32lji")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_us44l")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("2_32lji")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("1_jhl0j")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("1_jhl0j")
+frame_5/duration = 1.0

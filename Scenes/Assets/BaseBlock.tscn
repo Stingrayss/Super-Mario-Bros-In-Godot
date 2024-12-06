@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbv06xfc0mn0e"]
+
+[ext_resource type="Script" path="res://Scripts/Assets/BaseBlock.gd" id="1_vmfxb"]
+[ext_resource type="Shape2D" uid="uid://b1t2vu2ju11ie" path="res://Scenes/Assets/collision.tres" id="2_cgrxv"]
+[ext_resource type="Texture2D" uid="uid://cwqfsy4evya3w" path="res://Assets/Tilemap/hitblock.png" id="2_cyr0u"]
+
+[node name="BaseBlock" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 77
+script = ExtResource("1_vmfxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_cgrxv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("2_cgrxv")
+
+[node name="HitBlock" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cyr0u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

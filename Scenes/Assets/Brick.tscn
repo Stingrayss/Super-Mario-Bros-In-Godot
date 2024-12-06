@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://8qekwqc607lh"]
+
+[ext_resource type="PackedScene" uid="uid://bbv06xfc0mn0e" path="res://Scenes/Assets/BaseBlock.tscn" id="1_u1ly7"]
+[ext_resource type="Script" path="res://Scripts/Assets/Brick.gd" id="2_0uc4q"]
+[ext_resource type="Texture2D" uid="uid://bo4wu6fv0sohu" path="res://Assets/Tilemap/brick.png" id="3_5m1xs"]
+
+[node name="Brick" instance=ExtResource("1_u1ly7")]
+script = ExtResource("2_0uc4q")
+
+[node name="Sprite" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_5m1xs")

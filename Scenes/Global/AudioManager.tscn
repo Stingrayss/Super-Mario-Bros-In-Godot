@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr34wkbwhx10f"]
+
+[ext_resource type="Script" path="res://Scripts/Global/audio_manager.gd" id="1_e6kr1"]
+[ext_resource type="AudioStream" uid="uid://c3eqwfoo5ycwp" path="res://Assets/Audio/Music/Ground Theme.mp3" id="2_nyyey"]
+[ext_resource type="AudioStream" uid="uid://de2aehp2jmrp3" path="res://Assets/Audio/SFX/pause.wav" id="3_fkodv"]
+
+[node name="AudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_e6kr1")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nyyey")
+
+[node name="Pause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fkodv")
+
+[connection signal="finished" from="Pause" to="." method="_on_pause_finished"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4c30c5i1vckh"]
+
+[ext_resource type="Texture2D" uid="uid://b4dyiilhlprsy" path="res://Assets/Tilemap/castle.png" id="1_a84uk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s1fd"]
+size = Vector2(32, 80)
+
+[node name="Castle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a84uk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_6s1fd")

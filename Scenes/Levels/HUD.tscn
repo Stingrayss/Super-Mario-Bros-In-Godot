@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://ms018t8pkpdj"]
+
+[ext_resource type="FontFile" uid="uid://du2ot7yv563lb" path="res://Assets/Font/Super Mario Bros. NES.ttf" id="1_3k4m4"]
+[ext_resource type="Texture2D" uid="uid://dva1jlukfum5n" path="res://Assets/Spritesheets/HUD/amount_symbol.png" id="2_gqj4i"]
+[ext_resource type="Texture2D" uid="uid://bdjnwtmcb0bd6" path="res://Assets/Spritesheets/HUD/coins.tres" id="3_d4qqq"]
+[ext_resource type="Texture2D" uid="uid://q6j1xki25ax7" path="res://Assets/Spritesheets/HUD/transition_coin.png" id="4_m51bi"]
+
+[node name="HUD" type="Control"]
+z_index = 1
+layout_mode = 3
+anchor_top = -1.0
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HUDContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+
+[node name="UI" type="Control" parent="HUDContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TopLine" type="HBoxContainer" parent="HUDContainer/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 9.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Mario" type="Label" parent="HUDContainer/UI/TopLine"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "MARIO        "
+
+[node name="World" type="Label" parent="HUDContainer/UI/TopLine"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "WORLD"
+
+[node name="Time" type="Label" parent="HUDContainer/UI/TopLine"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "TIME"
+
+[node name="BottomLine" type="HBoxContainer" parent="HUDContainer/UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 9.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Mario" type="Label" parent="HUDContainer/UI/BottomLine"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "000000"
+
+[node name="Coins" type="Label" parent="HUDContainer/UI/BottomLine"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "00"
+
+[node name="Amount_Symbol" type="TextureRect" parent="HUDContainer/UI/BottomLine/Coins"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 1.0
+offset_bottom = 9.0
+texture = ExtResource("2_gqj4i")
+
+[node name="Coin" type="TextureRect" parent="HUDContainer/UI/BottomLine/Coins"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 1.0
+offset_right = -8.0
+offset_bottom = 9.0
+texture = ExtResource("3_d4qqq")
+
+[node name="Underground_Coin" type="TextureRect" parent="HUDContainer/UI/BottomLine/Coins"]
+visible = false
+layout_mode = 0
+offset_left = -16.0
+offset_top = 1.0
+offset_right = -8.0
+offset_bottom = 9.0
+texture = ExtResource("3_d4qqq")
+
+[node name="Transition_Coin" type="TextureRect" parent="HUDContainer/UI/BottomLine/Coins"]
+visible = false
+layout_mode = 0
+offset_left = -16.0
+offset_top = 1.0
+offset_right = -8.0
+offset_bottom = 9.0
+texture = ExtResource("4_m51bi")
+
+[node name="World" type="Label" parent="HUDContainer/UI/BottomLine"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "1-1"
+
+[node name="Time" type="Label" parent="HUDContainer/UI/BottomLine"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3k4m4")
+theme_override_font_sizes/font_size = 8
+text = "400"

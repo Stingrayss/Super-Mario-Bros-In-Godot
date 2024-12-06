@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://tlyrsksw7fd5"]
+
+[ext_resource type="PackedScene" uid="uid://bbv06xfc0mn0e" path="res://Scenes/Assets/BaseBlock.tscn" id="1_5bl2k"]
+[ext_resource type="Script" path="res://Scripts/Assets/QuestionBlock.gd" id="2_5po0c"]
+[ext_resource type="Texture2D" uid="uid://fll1k3qjpke7" path="res://Assets/Tilemap/tilemap.png" id="3_g45av"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_838qk"]
+atlas = ExtResource("3_g45av")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f7cv"]
+atlas = ExtResource("3_g45av")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vvru"]
+atlas = ExtResource("3_g45av")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdurw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_838qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f7cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vvru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f7cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_838qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_838qk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="QuestionBlock" instance=ExtResource("1_5bl2k")]
+script = ExtResource("2_5po0c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_jdurw")
