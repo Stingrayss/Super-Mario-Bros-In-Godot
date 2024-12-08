@@ -12,6 +12,11 @@ func play_pause_sfx() -> void:
 		pause_music()
 	$Pause.play()
 	
+func play_death_sfx() -> void:
+	if (music_paused):
+		$Music.stop()
+	$Dying.play()
+	
 func pause_music() -> void:
 	music_paused = true
 	music_position = $Music.get_playback_position()

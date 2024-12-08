@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://b06mg1884gmqp"]
+
+[ext_resource type="Texture2D" uid="uid://dvbx5m0dbvjvq" path="res://Assets/Spritesheets/Enemies/Enemies.png" id="1_kxabs"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Koopa.gd" id="2_1n32g"]
+[ext_resource type="Shape2D" uid="uid://cgfcbkkqqaemb" path="res://Assets/Spritesheets/Enemies/body_collision.tres" id="3_2hnn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv143"]
+atlas = ExtResource("1_kxabs")
+region = Rect2(34, 17, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu168"]
+atlas = ExtResource("1_kxabs")
+region = Rect2(0, 17, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pot17"]
+atlas = ExtResource("1_kxabs")
+region = Rect2(17, 17, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j538c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv143")
+}],
+"loop": true,
+"name": &"Shell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu168")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pot17")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Koopa" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("2_1n32g")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j538c")
+animation = &"Shell"
+autoplay = "Walk"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = ExtResource("3_2hnn1")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -0.5)
+shape = ExtResource("3_2hnn1")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,28 +1,23 @@
 extends Node2D
 
-@onready var time_label: Label = $"PlayerCamera/HUD/HUDContainer/UI/BottomLine/Time"
-@onready var coin_texture: AnimatedTexture = $"PlayerCamera/HUD/HUDContainer/UI/BottomLine/Coins/Coin".texture
-
-var time_frame_count = 0
-
-# Helper Functions
-func update_time() -> void:
-	time_label.text = str(Game.time)
+@onready var time_label: Label = $"Camera2D/HUD/HUDContainer/UI/BottomLine/Time"
+@onready var score_label: Label = $"Camera2D/HUD/HUDContainer/UI/BottomLine/Score"
+@onready var coin_texture: AnimatedTexture = $"Camera2D/HUD/HUDContainer/UI/BottomLine/Coins/Coin".texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#load the user's top score
 	AudioManager.play_music()
 	
+func update_HUD():
+	Game.update_time()
+	var score = Game.get_score()
+	time_label.text = str(Game.time)
+	score_label.text = str(score)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#time logic
-	time_frame_count += 1
-	if (time_frame_count == 24):
-		Game.time -= 1.00
-		update_time()
-		time_frame_count = 0
-	pass
+	update_HUD()
 
 # pause event
 func _input(_event: InputEvent) -> void:

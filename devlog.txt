@@ -13,17 +13,20 @@
 - options
 - extra content
 - level selecter
+- koopa shell needs to animate killing enemies
 
 -- things to do --
-- figure out layer masks for tiles (redo tiles basically)
-- watch tutorial
+- enemy sfx
+- prevent enemies from moving until in range
+- blocks
+- mushroom + big mario
+- pipes
+- update HUD
 
 -- big items --
-- mario movement (15% of remaining)
-- enemies (15%)
 - blocks (5%)
 - flagpole interaction + sequence (NEED TO BE SCENE) (5%)
 - game variable logic (5%)
 
 -- progress --
-- 55%/100%
+- 95%/100%

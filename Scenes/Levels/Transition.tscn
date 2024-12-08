@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwdpa1t6i4k10"]
+[gd_scene load_steps=6 format=3 uid="uid://cwdpa1t6i4k10"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/transition.gd" id="1_7m1ef"]
 [ext_resource type="PackedScene" uid="uid://ms018t8pkpdj" path="res://Scenes/Levels/HUD.tscn" id="1_464b5"]
 [ext_resource type="Texture2D" uid="uid://dva1jlukfum5n" path="res://Assets/Spritesheets/HUD/amount_symbol.png" id="2_p6336"]
+[ext_resource type="Texture2D" uid="uid://bnnfl4r0r140j" path="res://Assets/Spritesheets/Player/small_mario.png" id="4_ead10"]
+[ext_resource type="FontFile" uid="uid://du2ot7yv563lb" path="res://Assets/Font/Super Mario Bros. NES.ttf" id="4_noult"]
 
 [node name="Transition" type="Control"]
 layout_mode = 3
@@ -15,10 +17,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("1_7m1ef")
 
-[node name="HUD" parent="." instance=ExtResource("1_464b5")]
-layout_mode = 1
-offset_top = 243.0
-offset_bottom = 243.0
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, 121)
+offset = Vector2(0, 0.5)
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("1_464b5")]
+offset_left = -128.0
+offset_top = -121.0
+offset_right = 128.0
+offset_bottom = 122.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -30,25 +37,45 @@ color = Color(0, 0, 0, 1)
 [node name="Load_Timer" type="Timer" parent="."]
 wait_time = 2.5
 
-[node name="x" type="TextureRect" parent="."]
+[node name="World" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_p6336")
+offset_left = 88.0
+offset_top = 79.0
+offset_right = 160.0
+offset_bottom = 88.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_noult")
+theme_override_font_sizes/font_size = 8
+text = "WORLD 1-1"
 
 [node name="Mario" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 96.0
+offset_top = 105.0
+offset_right = 136.0
+offset_bottom = 145.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ead10")
 
-[node name="Stage" type="Label" parent="."]
+[node name="x" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 18.0
+offset_left = 120.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 152.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_p6336")
 
 [node name="Lives" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 18.0
+offset_left = 144.0
+offset_top = 112.0
+offset_right = 216.0
+offset_bottom = 121.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_noult")
+theme_override_font_sizes/font_size = 8
 
 [connection signal="timeout" from="Load_Timer" to="." method="_on_load_timer_timeout"]

@@ -1,6 +1,6 @@
 extends Node
 
-@onready var coin_texture: AnimatedTexture = $"../PlayerCamera/HUD/HUDContainer/UI/BottomLine/Coins/Coin".texture
+@onready var coin_texture: AnimatedTexture = $"../Camera2D/HUD/HUDContainer/UI/BottomLine/Coins/Coin".texture
 
 func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_released("start") && get_tree().paused):

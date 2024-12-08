@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://cc2xh6cdmo4t"]
+[gd_scene load_steps=13 format=4 uid="uid://cc2xh6cdmo4t"]
 
-[ext_resource type="Script" path="res://Scripts/Global/game_status.gd" id="1_8cqyu"]
+[ext_resource type="Script" path="res://Scripts/Global/level_status.gd" id="1_8cqyu"]
 [ext_resource type="Script" path="res://Scripts/Global/pause_manager.gd" id="2_lwyjc"]
-[ext_resource type="Script" path="res://Scripts/Player/player_camera.gd" id="3_xea1o"]
 [ext_resource type="PackedScene" uid="uid://ms018t8pkpdj" path="res://Scenes/Levels/HUD.tscn" id="4_v27bv"]
+[ext_resource type="PackedScene" uid="uid://gsbx0o2gc337" path="res://Scenes/Enemies/Goomba.tscn" id="5_ansbl"]
 [ext_resource type="PackedScene" uid="uid://dx5yq1pp8m80j" path="res://Scenes/Player/player.tscn" id="7_3gm0t"]
 [ext_resource type="Texture2D" uid="uid://b4efwj4uqvvee" path="res://Assets/SMB_NES_World_1-1_Map.png" id="8_gn4yv"]
 [ext_resource type="TileSet" uid="uid://mthffehutx77" path="res://Assets/Tilemap/tileset.tres" id="8_rsmra"]
@@ -11,31 +11,29 @@
 [ext_resource type="PackedScene" uid="uid://c4c30c5i1vckh" path="res://Scenes/Assets/Castle.tscn" id="9_c138v"]
 [ext_resource type="Texture2D" uid="uid://cloed8mhveves" path="res://Assets/Tilemap/background.png" id="9_lcwb6"]
 [ext_resource type="PackedScene" uid="uid://drsd87ckggixa" path="res://Scenes/Assets/Flagpole.tscn" id="11_bsfpl"]
+[ext_resource type="PackedScene" uid="uid://b06mg1884gmqp" path="res://Scenes/Enemies/Koopa.tscn" id="12_jlel3"]
 
 [node name="Level1-1" type="Node2D"]
 script = ExtResource("1_8cqyu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, -90)
+offset = Vector2(0, 0.5)
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("4_v27bv")]
+offset_left = -128.0
+offset_top = -121.0
+offset_right = 128.0
+offset_bottom = 122.0
 
 [node name="PauseGame" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("2_lwyjc")
 
-[node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(128, -1)
-offset = Vector2(0, -88.5)
-script = ExtResource("3_xea1o")
-
-[node name="HUD" parent="PlayerCamera" instance=ExtResource("4_v27bv")]
-offset_left = -128.0
-offset_top = -210.0
-offset_right = 128.0
-offset_bottom = 33.0
-
 [node name="Player" parent="." instance=ExtResource("7_3gm0t")]
 z_index = 1
-position = Vector2(42, 1)
-scale = Vector2(0.5, 0.5)
+position = Vector2(48, -7)
 collision_mask = 158
-SPEED = 350.0
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -68,11 +66,6 @@ tile_set = ExtResource("8_rsmra")
 [node name="QuestionBlock" parent="Tiles/Stage/HiddenBlocks" instance=ExtResource("9_5ptgf")]
 visible = false
 position = Vector2(1033, -76)
-collision_mask = 1
-
-[node name="QuestionBlock2" parent="Tiles/Stage/HiddenBlocks" instance=ExtResource("9_5ptgf")]
-visible = false
-position = Vector2(49, -45)
 collision_mask = 1
 
 [node name="Stairs" type="TileMapLayer" parent="Tiles/Stage"]
@@ -120,3 +113,73 @@ offset_top = 32.0
 offset_right = 928.0
 offset_bottom = 208.0
 texture = ExtResource("9_lcwb6")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Koopa" parent="Enemies" instance=ExtResource("12_jlel3")]
+z_index = 1
+position = Vector2(1720, -11)
+
+[node name="Goomba" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1288, -135)
+
+[node name="Goomba2" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1320, -135)
+
+[node name="Goomba3" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1560, -7)
+
+[node name="Goomba4" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1584, -7)
+
+[node name="Goomba5" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1832, -7)
+
+[node name="Goomba6" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1855, -7)
+
+[node name="Goomba7" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(1992, -7)
+
+[node name="Goomba8" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(2015, -7)
+
+[node name="Goomba9" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(2056, -7)
+
+[node name="Goomba10" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(2079, -7)
+
+[node name="Goomba11" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(2792, -7)
+
+[node name="Goomba12" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(2815, -7)
+
+[node name="Goomba13" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(360, -7)
+
+[node name="Goomba14" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(648, -7)
+
+[node name="Goomba15" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(824, -7)
+
+[node name="Goomba16" parent="Enemies" instance=ExtResource("5_ansbl")]
+z_index = 1
+position = Vector2(847, -7)

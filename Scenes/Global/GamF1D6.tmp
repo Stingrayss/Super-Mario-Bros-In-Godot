@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://wimunknyxulc"]
+
+[ext_resource type="Script" path="res://Scripts/Global/game.gd" id="1_eiifq"]
+[ext_resource type="PackedScene" uid="uid://ms018t8pkpdj" path="res://Scenes/Levels/HUD.tscn" id="1_ijl5c"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_eiifq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, -89)
+offset = Vector2(0, -0.5)
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("1_ijl5c")]
+offset_left = -128.0
+offset_top = -122.0
+offset_right = 128.0
+offset_bottom = 120.0

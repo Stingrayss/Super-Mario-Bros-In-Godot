@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://gsbx0o2gc337"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Goomba.gd" id="1_3exge"]
+[ext_resource type="Texture2D" uid="uid://dvbx5m0dbvjvq" path="res://Assets/Spritesheets/Enemies/Enemies.png" id="1_qelf4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn6vj"]
+atlas = ExtResource("1_qelf4")
+region = Rect2(34, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8hjb"]
+atlas = ExtResource("1_qelf4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_222ik"]
+atlas = ExtResource("1_qelf4")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70jpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn6vj")
+}],
+"loop": true,
+"name": &"Stomped",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8hjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_222ik")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cias"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kf6e"]
+size = Vector2(16, 15)
+
+[node name="Goomba" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 22
+script = ExtResource("1_3exge")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_70jpe")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.232799
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5cias")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_6kf6e")
+
+[node name="Death_Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Death_Timer" to="." method="_on_death_timer_timeout"]

@@ -65,7 +65,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 
-[node name="Mario" type="Label" parent="HUDContainer/UI/BottomLine"]
+[node name="Score" type="Label" parent="HUDContainer/UI/BottomLine"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_3k4m4")
 theme_override_font_sizes/font_size = 8
