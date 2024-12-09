@@ -232,6 +232,10 @@ visible = false
 scale = Vector2(16, 16)
 shape = ExtResource("2_xvxqn")
 
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="animation_finished" from="TransitionSprite" to="." method="_on_transition_sprite_animation_finished"]
 [connection signal="ready" from="TransitionSprite" to="." method="_on_transition_sprite_ready"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

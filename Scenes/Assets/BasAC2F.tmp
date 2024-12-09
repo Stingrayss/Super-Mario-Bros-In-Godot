@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbv06xfc0mn0e"]
+[gd_scene load_steps=4 format=3 uid="uid://bbv06xfc0mn0e"]
 
 [ext_resource type="Script" path="res://Scripts/Assets/BaseBlock.gd" id="1_vmfxb"]
 [ext_resource type="Shape2D" uid="uid://b1t2vu2ju11ie" path="res://Scenes/Assets/collision.tres" id="2_cgrxv"]
 [ext_resource type="Texture2D" uid="uid://cwqfsy4evya3w" path="res://Assets/Tilemap/hitblock.png" id="2_cyr0u"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlkf6"]
-size = Vector2(2, 3)
 
 [node name="BaseBlock" type="StaticBody2D"]
 collision_layer = 16
@@ -18,8 +15,7 @@ shape = ExtResource("2_cgrxv")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_vlkf6")
+shape = ExtResource("2_cgrxv")
 
 [node name="HitBlock" type="Sprite2D" parent="."]
 visible = false

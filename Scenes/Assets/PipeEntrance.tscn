@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qy2mug80slme"]
+
+[ext_resource type="Script" path="res://Scripts/Assets/pipe_entrance.gd" id="1_avhey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yextg"]
+size = Vector2(22, 10)
+
+[node name="PipeEntrance" type="Area2D"]
+script = ExtResource("1_avhey")
+
+[node name="EnteringTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yextg")

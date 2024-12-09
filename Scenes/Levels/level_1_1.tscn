@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://cc2xh6cdmo4t"]
+[gd_scene load_steps=14 format=4 uid="uid://cc2xh6cdmo4t"]
 
 [ext_resource type="Script" path="res://Scripts/Global/level_status.gd" id="1_8cqyu"]
 [ext_resource type="Script" path="res://Scripts/Global/pause_manager.gd" id="2_lwyjc"]
 [ext_resource type="PackedScene" uid="uid://ms018t8pkpdj" path="res://Scenes/Levels/HUD.tscn" id="4_v27bv"]
 [ext_resource type="PackedScene" uid="uid://gsbx0o2gc337" path="res://Scenes/Enemies/Goomba.tscn" id="5_ansbl"]
+[ext_resource type="PackedScene" uid="uid://qy2mug80slme" path="res://Scenes/Assets/PipeEntrance.tscn" id="6_malvq"]
 [ext_resource type="PackedScene" uid="uid://dx5yq1pp8m80j" path="res://Scenes/Player/player.tscn" id="7_3gm0t"]
 [ext_resource type="Texture2D" uid="uid://b4efwj4uqvvee" path="res://Assets/SMB_NES_World_1-1_Map.png" id="8_gn4yv"]
 [ext_resource type="TileSet" uid="uid://mthffehutx77" path="res://Assets/Tilemap/tileset.tres" id="8_rsmra"]
@@ -32,7 +33,7 @@ script = ExtResource("2_lwyjc")
 
 [node name="Player" parent="." instance=ExtResource("7_3gm0t")]
 z_index = 1
-position = Vector2(48, -7)
+position = Vector2(929, -74)
 collision_mask = 158
 
 [node name="Tiles" type="Node" parent="."]
@@ -59,6 +60,9 @@ tile_set = ExtResource("8_rsmra")
 [node name="Pipes" type="TileMapLayer" parent="Tiles/Stage"]
 tile_map_data = PackedByteArray("AAAcAP7/AAASAAAAAAAcAP//AAASAAEAAAAdAP7/AAATAAAAAAAdAP//AAATAAEAAAAmAP3/AAASAAAAAAAmAP7/AAASAAEAAAAnAP3/AAATAAAAAAAnAP7/AAATAAEAAAAuAPz/AAASAAAAAAAuAP3/AAASAAEAAAAvAPz/AAATAAAAAAAvAP3/AAATAAEAAAA5APz/AAASAAAAAAA5AP3/AAASAAEAAAA6APz/AAATAAAAAAA6AP3/AAATAAEAAACjAP7/AAASAAAAAACjAP//AAASAAEAAACkAP7/AAATAAAAAACkAP//AAATAAEAAACzAP7/AAASAAAAAACzAP//AAASAAEAAAC0AP7/AAATAAAAAAC0AP//AAATAAEAAAA5AP7/AAASAAEAAAA6AP7/AAATAAEAAAA5AP//AAASAAEAAAA6AP//AAATAAEAAAAuAP7/AAASAAEAAAAvAP7/AAATAAEAAAAuAP//AAASAAEAAAAvAP//AAATAAEAAAAmAP//AAASAAEAAAAnAP//AAATAAEAAAA=")
 tile_set = ExtResource("8_rsmra")
+
+[node name="PipeEntrance" parent="Tiles/Stage/Pipes" instance=ExtResource("6_malvq")]
+position = Vector2(928, -69)
 
 [node name="HiddenBlocks" type="TileMapLayer" parent="Tiles/Stage"]
 tile_set = ExtResource("8_rsmra")

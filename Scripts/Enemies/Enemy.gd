@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@onready var player: CharacterBody2D = get_node("../../Player")
+@onready var player: CharacterBody2D = get_node("../Player")
+@onready var points_animation = preload("res://Scenes/Assets/Points_Animation.tscn")
 
 @onready var MOVEMENT_SPEED = Physics.MOVE_SPEED
 @onready var FALL_SPEED = Physics.MAX_FALL_SPEED
@@ -50,7 +51,26 @@ func _on_hitbox_area_entered(area: Area2D):
 	if body is Player and body.has_cooldown:
 		return
 		
+	if shell and body is Enemy:
+		body.is_facing_left = not body.is_facing_left
 			
 	if pushed and body is Enemy:
-		body.kill()
+		body.die_from_hit()
 		MOVEMENT_SPEED = MOVEMENT_SPEED
+
+
+func die_from_hit():
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(3, false)
+	
+	rotation_degrees = 180
+	MOVEMENT_SPEED = 0
+	FALL_SPEED = 0
+	
+	var die_tween = get_tree().create_tween()
+	die_tween.tween_property(self, "position", position + Vector2(0, -25), .2)
+	die_tween.chain().tween_property(self, "position", position + Vector2(0, 500), 2)
+	
+	var points_animation = points_animation.instantiate()
+	points_animation.position = self.position + Vector2(-20, -20)
+	get_tree().root.add_child(points_animation)

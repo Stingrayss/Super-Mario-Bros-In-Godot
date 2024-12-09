@@ -26,8 +26,6 @@ const STOMP_SPEED_CAP = -60.0
 
 const COOLDOWN_TIME_SEC = 3.0
 
-enum STATE {SMALL, BIG, FIRE}
-
 # Input
 var spawnpoint = Vector2(48, -7)
 
@@ -37,6 +35,7 @@ var is_jumping = false
 var is_falling = false
 var is_skiding = false
 var is_crouching = false
+var entering_pipe = false
 
 var _old_velocity = Vector2.ZERO
 
@@ -75,6 +74,9 @@ var collected_item_ref: Node = null
 
 # Nodes
 @onready var camera = get_node("../Camera2D")
+@onready var points_animation = preload("res://Scenes/Assets/Points_Animation.tscn")
+@onready var tranistion_timer = $TransitionTimer
+signal points_scored(points: int)
 
 @onready var sprite = $SmallSprite
 
@@ -236,6 +238,10 @@ func process_animation():
 	sprite.flip_h = is_facing_left
 	sprite.speed_scale = max(1.75, speed_scale * 5.0)
 	
+	if isDead:
+		sprite.play("Dying")
+		return
+	
 	if is_falling:
 		sprite.stop()
 	elif is_crouching and state:
@@ -270,17 +276,35 @@ func _update_tree():
 	small_hitbox_shape.disabled = not is_crouching_or_small
 
 func transform(to_state: State):
-	state = to_state
-	
+	state = to_state	
 	
 func handle_death():
-	#Physics.disable()
+	#start death timer so animation plays before reloading level
+	tranistion_timer.start()
+	isDead = true
+	
+	#prevent collisions
+	set_physics_process(false)	
+	set_collision_layer_value(1, false)
+	
+	#play mario death animation
+	var death_tween = get_tree().create_tween()
+	death_tween.tween_property(self, "position", position + Vector2(0, -48), .75)
+	death_tween.chain().tween_property(self, "position", position + Vector2(0, 256), 1)
+	
+	#stop all enemies from moving (animation and movement)
+	var enemy_group = get_tree().get_nodes_in_group("Enemies")  
+	for enemy in enemy_group:
+		enemy.MOVEMENT_SPEED = 0.00
+		enemy.sprite.stop()
+	
+	#update game variables
 	Game.lives -= 1
 	Game.time = 400
 	AudioManager.pause_music()
 	AudioManager.play_death_sfx()
-	sprite.play("Dying")
-	
+		
+func _on_transition_timer_timeout() -> void:
 	if (Game.lives > 0):
 		Game.change_level("Level1-1", "res://Scenes/Levels/Transition.tscn")
 	else:
@@ -325,14 +349,15 @@ func _on_transition_sprite_animation_finished() -> void:
 func _on_hitbox_area_entered(area: Area2D):
 	var body = area.get_parent()
 	if body.is_in_group("Enemies"):
-		if body.stomped:
+		if body.stomped or isDead:
 			return
 
-		var stomp = velocity.y > 0 and hitbox.global_position.y < area.global_position.y
+		var stomp = velocity.y != 0 and hitbox.global_position.y < area.global_position.y
 
 		if stomp:
 			if body.has_method("stomp"):
 				body.stomp()
+				spawn_points_animation(body, 100)
 				velocity.y = fmod(velocity.y, STOMP_SPEED_CAP) - STOMP_SPEED
 		elif body.shell and not body.pushed:
 			body.push()
@@ -345,3 +370,9 @@ func _on_hitbox_area_entered(area: Area2D):
 		
 		#if body is RedMushroom:
 			#transform(State.BIG)
+
+func spawn_points_animation(body, points):
+	var points_animation = points_animation.instantiate()
+	points_animation.position = body.position + Vector2(-20, -20)
+	get_tree().root.add_child(points_animation)
+	points_scored.emit(points)

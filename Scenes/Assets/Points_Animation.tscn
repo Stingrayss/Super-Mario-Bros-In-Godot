@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1w608xo3b2n"]
+
+[ext_resource type="Script" path="res://Scripts/Assets/Points_Animation.gd" id="1_adycw"]
+[ext_resource type="FontFile" uid="uid://du2ot7yv563lb" path="res://Assets/Font/Super Mario Bros. NES.ttf" id="1_ms71r"]
+
+[node name="PointsAnimation" type="Label"]
+offset_right = 1.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("1_ms71r")
+theme_override_font_sizes/font_size = 8
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_adycw")
