@@ -47,3 +47,5 @@ script = ExtResource("2_5po0c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_jdurw")
+autoplay = "default"
+frame_progress = 0.202223

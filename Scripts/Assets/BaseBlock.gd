@@ -2,8 +2,7 @@ extends StaticBody2D
 
 class_name BaseBlock
 
-@onready var Block = $AnimatedSprite2D
-@onready var hitBlock = $Sprite2D
+@onready var hitBlock = $HitBlock
 
 var isActivated: bool = false
 

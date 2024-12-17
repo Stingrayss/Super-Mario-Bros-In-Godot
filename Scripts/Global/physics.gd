@@ -5,7 +5,7 @@ const MAX_FALL_SPEED = 270.0
 const JUMP_SPEED = -240.0
 const MOVE_SPEED = 30.00
 
-@onready var _level = get_node("../Level1-1")
+var _level: Node2D
 
 func _process(_delta):
 	Engine.physics_ticks_per_second = round(DisplayServer.screen_get_refresh_rate())
