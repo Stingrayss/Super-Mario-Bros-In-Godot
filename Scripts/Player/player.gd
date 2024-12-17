@@ -110,7 +110,7 @@ func _physics_process(delta):
 	handle_last_collision()
 	
 func process_camera_bounds():
-	if global_position.x > camera.position.x:
+	if global_position.x > camera.position.x and global_position.y <= 0:
 		camera.position.x = global_position.x
 	
 	var camera_left_bound = 8 + camera.position.x - get_viewport_rect().size.x / 2 / camera.zoom.x
@@ -352,7 +352,7 @@ func _on_hitbox_area_entered(area: Area2D):
 		if body.stomped or isDead:
 			return
 
-		var stomp = velocity.y != 0 and hitbox.global_position.y < area.global_position.y
+		var stomp = is_falling and hitbox.global_position.y < area.global_position.y
 
 		if stomp:
 			if body.has_method("stomp"):

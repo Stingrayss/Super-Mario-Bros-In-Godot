@@ -26,6 +26,7 @@ offset_left = -128.0
 offset_top = -121.0
 offset_right = 128.0
 offset_bottom = 122.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseGame" type="Node" parent="."]
 process_mode = 2
@@ -33,7 +34,7 @@ script = ExtResource("2_lwyjc")
 
 [node name="Player" parent="." instance=ExtResource("7_3gm0t")]
 z_index = 1
-position = Vector2(929, -74)
+position = Vector2(48, -7)
 collision_mask = 158
 
 [node name="Tiles" type="Node" parent="."]
@@ -62,7 +63,13 @@ tile_map_data = PackedByteArray("AAAcAP7/AAASAAAAAAAcAP//AAASAAEAAAAdAP7/AAATAAA
 tile_set = ExtResource("8_rsmra")
 
 [node name="PipeEntrance" parent="Tiles/Stage/Pipes" instance=ExtResource("6_malvq")]
-position = Vector2(928, -69)
+position = Vector2(928, -60)
+
+[node name="PipeEntrance2" parent="Tiles/Stage/Pipes" instance=ExtResource("6_malvq")]
+position = Vector2(884, 231)
+rotation = 1.5708
+Horizontal = false
+pipeIndex = 1
 
 [node name="HiddenBlocks" type="TileMapLayer" parent="Tiles/Stage"]
 tile_set = ExtResource("8_rsmra")
@@ -91,31 +98,31 @@ position = Vector2(3176, -84)
 [node name="Underground" type="Node" parent="Tiles"]
 
 [node name="Bricks" type="TileMapLayer" parent="Tiles/Underground"]
-position = Vector2(-1696, -16)
+position = Vector2(-1696, 19)
 tile_map_data = PackedByteArray("AACUAAMAAAACAAEAAACUAAQAAAACAAEAAACUAAUAAAACAAEAAACUAAYAAAACAAEAAACUAAcAAAACAAEAAACUAAgAAAACAAEAAACUAAkAAAACAAEAAACUAAoAAAACAAEAAACUAAsAAAACAAEAAACUAAwAAAACAAEAAACUAA0AAAACAAEAAACYAAsAAAACAAEAAACZAAsAAAACAAEAAACaAAsAAAACAAEAAACbAAsAAAACAAEAAACcAAsAAAACAAEAAACdAAsAAAACAAEAAACeAAsAAAACAAEAAACeAAwAAAACAAEAAACeAA0AAAACAAEAAACdAA0AAAACAAEAAACcAA0AAAACAAEAAACbAA0AAAACAAEAAACaAA0AAAACAAEAAACZAA0AAAACAAEAAACYAA0AAAACAAEAAACYAAwAAAACAAEAAACZAAwAAAACAAEAAACaAAwAAAACAAEAAACbAAwAAAACAAEAAACcAAwAAAACAAEAAACdAAwAAAACAAEAAACYAAMAAAACAAEAAACZAAMAAAACAAEAAACaAAMAAAACAAEAAACbAAMAAAACAAEAAACcAAMAAAACAAEAAACdAAMAAAACAAEAAACeAAMAAAACAAEAAAA=")
 tile_set = ExtResource("8_rsmra")
 
 [node name="Ground" type="TileMapLayer" parent="Tiles/Underground"]
-position = Vector2(-1696, -16)
+position = Vector2(-1696, 19)
 tile_map_data = PackedByteArray("AACUAA4AAAAAAAEAAACVAA4AAAAAAAEAAACWAA4AAAAAAAEAAACXAA4AAAAAAAEAAACYAA4AAAAAAAEAAACZAA4AAAAAAAEAAACaAA4AAAAAAAEAAACbAA4AAAAAAAEAAACcAA4AAAAAAAEAAACdAA4AAAAAAAEAAACeAA4AAAAAAAEAAACfAA4AAAAAAAEAAACgAA4AAAAAAAEAAAChAA4AAAAAAAEAAACiAA4AAAAAAAEAAACjAA4AAAAAAAEAAACkAA4AAAAAAAEAAACkAA8AAAAAAAEAAACjAA8AAAAAAAEAAACiAA8AAAAAAAEAAAChAA8AAAAAAAEAAACgAA8AAAAAAAEAAACfAA8AAAAAAAEAAACeAA8AAAAAAAEAAACdAA8AAAAAAAEAAACcAA8AAAAAAAEAAACbAA8AAAAAAAEAAACaAA8AAAAAAAEAAACZAA8AAAAAAAEAAACYAA8AAAAAAAEAAACXAA8AAAAAAAEAAACWAA8AAAAAAAEAAACVAA8AAAAAAAEAAACUAA8AAAAAAAEAAAA=")
 tile_set = ExtResource("8_rsmra")
 
 [node name="Pipes" type="TileMapLayer" parent="Tiles/Underground"]
-position = Vector2(-1696, -16)
+position = Vector2(-1696, 19)
 tile_map_data = PackedByteArray("AAChAAwAAAAUAAAAAAChAA0AAAAUAAEAAACiAAwAAAAVAAAAAACiAA0AAAAVAAEAAACjAAwAAAAWAAAAAACjAA0AAAAWAAEAAACkAA0AAAATAAEAAACkAAwAAAATAAEAAACjAAsAAAASAAEAAACkAAsAAAATAAEAAACjAAoAAAASAAEAAACkAAoAAAATAAEAAACjAAkAAAASAAEAAACkAAkAAAATAAEAAACjAAgAAAASAAEAAACkAAgAAAATAAEAAACjAAcAAAASAAEAAACkAAcAAAATAAEAAACjAAYAAAASAAEAAACkAAYAAAATAAEAAACjAAUAAAASAAEAAACkAAUAAAATAAEAAACjAAQAAAASAAEAAACkAAQAAAATAAEAAACjAAMAAAASAAEAAACkAAMAAAATAAEAAAA=")
 tile_set = ExtResource("8_rsmra")
 
 [node name="Coins" type="TileMapLayer" parent="Tiles/Underground"]
-position = Vector2(-1696, -16)
+position = Vector2(-1696, 19)
 tile_map_data = PackedByteArray("AACYAAoAAgAAAAAABgCZAAoAAgAAAAAABgCaAAoAAgAAAAAABgCbAAoAAgAAAAAABgCcAAoAAgAAAAAABgCdAAoAAgAAAAAABgCeAAoAAgAAAAAABgCeAAgAAgAAAAAABgCdAAgAAgAAAAAABgCcAAgAAgAAAAAABgCbAAgAAgAAAAAABgCaAAgAAgAAAAAABgCZAAgAAgAAAAAABgCYAAgAAgAAAAAABgCZAAYAAgAAAAAABgCaAAYAAgAAAAAABgCbAAYAAgAAAAAABgCcAAYAAgAAAAAABgCdAAYAAgAAAAAABgA=")
 tile_set = ExtResource("8_rsmra")
 
 [node name="Background" type="TextureRect" parent="Tiles/Underground"]
 z_index = -1
-offset_left = 688.0
+offset_left = 672.0
 offset_top = 32.0
-offset_right = 928.0
-offset_bottom = 208.0
+offset_right = 942.0
+offset_bottom = 272.0
 texture = ExtResource("9_lcwb6")
 
 [node name="Enemies" type="Node" parent="."]
