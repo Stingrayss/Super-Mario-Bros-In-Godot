@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://drsd87ckggixa"]
+[gd_scene load_steps=6 format=3 uid="uid://drsd87ckggixa"]
 
+[ext_resource type="Script" path="res://Scripts/Assets/flagpole.gd" id="1_8xhfn"]
 [ext_resource type="Texture2D" uid="uid://cxcs1js6qf5nq" path="res://Assets/Tilemap/flagpole.png" id="1_myov3"]
 [ext_resource type="Texture2D" uid="uid://8nbylv2k3syl" path="res://Assets/Tilemap/flag.png" id="2_vlx1r"]
+[ext_resource type="TileSet" uid="uid://mthffehutx77" path="res://Assets/Tilemap/tileset.tres" id="3_3d7j0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gaqr"]
 size = Vector2(13, 152)
 
 [node name="Flagpole" type="Node2D"]
+script = ExtResource("1_8xhfn")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -20,3 +23,10 @@ texture = ExtResource("1_myov3")
 [node name="Flag" type="Sprite2D" parent="."]
 position = Vector2(-8, -67)
 texture = ExtResource("2_vlx1r")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(8, 4)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 4, 0, 0, 0, 1, 0, 1, 0, 0, 0)
+tile_set = ExtResource("3_3d7j0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

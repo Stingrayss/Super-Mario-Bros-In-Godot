@@ -58,4 +58,8 @@ shape = ExtResource("3_2hnn1")
 position = Vector2(0, -0.5)
 shape = ExtResource("3_2hnn1")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-87, 0)
+rect = Rect2(-10, -10, 200, 20)
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -66,5 +66,9 @@ shape = SubResource("RectangleShape2D_6kf6e")
 
 [node name="Death_Timer" type="Timer" parent="."]
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-91, 0)
+rect = Rect2(-10, -10, 200, 20)
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Death_Timer" to="." method="_on_death_timer_timeout"]

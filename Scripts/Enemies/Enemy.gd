@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@onready var player: CharacterBody2D = get_node("../Player")
+@onready var player: CharacterBody2D = get_node("../../Player")
 @onready var points_animation = preload("res://Scenes/Assets/Points_Animation.tscn")
 
 @onready var MOVEMENT_SPEED = Physics.MOVE_SPEED
@@ -10,6 +10,7 @@ class_name Enemy
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @export var is_facing_left: bool = true
+@onready var in_range: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 const DESPAWN_TIME_SEC: float = 1.0
 
@@ -23,6 +24,8 @@ func kill():
 	queue_free()
 
 func _physics_process(delta):
+	if not in_range.is_on_screen():
+		return
 	var collision = get_last_slide_collision()
 	
 	if pushed and last_x_position == position.x:

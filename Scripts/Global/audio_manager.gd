@@ -22,6 +22,9 @@ func pause_music() -> void:
 	music_position = $Music.get_playback_position()
 	$Music.stop()
 	
+func stop_music() -> void:
+	$Music.stop()
+	
 func resume_music() -> void:
 	$Music.play(music_position)
 
